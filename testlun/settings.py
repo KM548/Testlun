@@ -4,8 +4,17 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-change-me")
-DEBUG = os.environ.get("DEBUG", "True") == "True"
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".onrender.com"]
+DEBUG = os.environ.get("DEBUG", "False") == "True"
+
+allowed_hosts_env = os.environ.get("ALLOWED_HOSTS", "127.0.0.1,localhost,.onrender.com")
+ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(",") if host.strip()]
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in os.environ.get("CSRF_TRUSTED_ORIGINS", "https://*.onrender.com").split(",") if origin.strip()]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
