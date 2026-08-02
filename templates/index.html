@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prac1</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/cssprac1.css' %}" />
+</head>
+<body>
+    <header>
+        <h1>Welcome M</h1>
+        <p>This website is specialize on training/practicing html coding</p>
+        <nav>
+            <a href="{% url 'another' %}">Another Website</a>
+            <a href="#container_one">Another Website1</a>
+            <a href="{% url 'another' %}">Another Website2</a>
+            <a href="{% url 'another' %}">Another Website3</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="container_one">
+            <h2>The title of this paper</h2>
+            <p>This is the first container within this website <br>
+            for this to have depth we have to put a whole sentence</p>
+            <button class="get_started">Learn more</button>
+        </section>
+
+        <section>
+            <h2>Another class button</h2>
+            <button class="get_started">Another button</button>
+        </section>
+    </main>
+
+    <footer>This is build for the betterment of my life and to improve ma skills in programming</footer>
+</body>
+</html>

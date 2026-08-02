@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: testlun
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn testlun.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
